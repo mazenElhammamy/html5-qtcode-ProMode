@@ -10,6 +10,8 @@
           @result="onScan"
         />
       </div>
+      <h3>Items</h3>
+      <div v-for="(item, index) in items" :key="index">{{ item }}</div>
       <div>
         {{ result }}
       </div>
@@ -21,9 +23,10 @@
 import { ref } from "vue";
 import QRScanner from "./components/QRCodeSanner.vue";
 
+const items = ref<string[]>([]);
 const result = ref("");
 function onScan(decodedText: string) {
-  result.value = decodedText;
+  items.value.push(decodedText);
   console.log(decodedText);
 }
 </script>
