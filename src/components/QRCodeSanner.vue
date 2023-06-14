@@ -1,9 +1,14 @@
 <template>
   <div id="reader"></div>
+  <button @click="start">start</button>
+  <button @click="stop">stop</button>
+  <button @click="pause">pause</button>
+  <button @click="resume">resume</button>
+  <button @click="clear" :disabled="true">clear</button>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+// import { onMounted } from "vue";
 import { Html5Qrcode } from "html5-qrcode";
 
 const emit = defineEmits(["result"]);
@@ -12,8 +17,7 @@ let html5Qrcode: Html5Qrcode | null;
 const onScanSuccess = (decodedText: string) => {
   emit("result", decodedText);
 };
-
-onMounted(() => {
+function start() {
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
@@ -29,5 +33,17 @@ onMounted(() => {
     onScanSuccess,
     () => {}
   );
-});
+}
+function stop() {
+  html5Qrcode?.stop();
+}
+function pause() {
+  html5Qrcode?.pause(true);
+}
+function resume() {
+  html5Qrcode?.resume();
+}
+function clear() {
+  html5Qrcode?.clear();
+}
 </script>
