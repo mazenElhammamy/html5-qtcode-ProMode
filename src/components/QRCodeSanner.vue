@@ -20,7 +20,7 @@ const onScanSuccess = (decodedText: string) => {
 function start() {
   //Start scanning QR codes or bar codes for a given camera
   const config = {
-    fps: 10,
+    fps: 1,
     qrbox: { width: 350, height: 350 },
   };
 
