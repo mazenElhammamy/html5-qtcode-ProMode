@@ -18,6 +18,7 @@ const onScanSuccess = (decodedText: string) => {
   emit("result", decodedText);
 };
 function start() {
+  //Start scanning QR codes or bar codes for a given camera
   const config = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
@@ -35,15 +36,22 @@ function start() {
   );
 }
 function stop() {
+  //Stops streaming QR Code video and scanning.
   html5Qrcode?.stop();
 }
 function pause() {
+  //Pauses the ongoing scan
   html5Qrcode?.pause(true);
 }
 function resume() {
+  //Resumes the paused scan.
   html5Qrcode?.resume();
 }
 function clear() {
+  /*
+    Clears the existing canvas.  
+    Note: in case of ongoing web cam based scan, it needs to be explicitly closed before calling this method, else it will throw exception.
+    */
   html5Qrcode?.clear();
 }
 </script>
