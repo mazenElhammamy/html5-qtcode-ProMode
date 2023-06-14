@@ -21,7 +21,7 @@ function start() {
   //Start scanning QR codes or bar codes for a given camera
   const config = {
     fps: 10,
-    qrbox: { width: 250, height: 250 },
+    qrbox: { width: 350, height: 350 },
   };
 
   html5Qrcode = new Html5Qrcode(
